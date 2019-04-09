@@ -18,6 +18,6 @@ $databaseName = 'test';
 $databaseUsername = 'prueba';
 $databasePassword = 'Password.123';
 
-$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
+$mysqli = new mysqli($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
 	
 ?>
