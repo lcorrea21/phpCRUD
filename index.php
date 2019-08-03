@@ -7,7 +7,7 @@
 
 <body>
 	<div id="header">
-		Welcome to my page!
+		Welcome to my page Luis Correa!
 	</div>
 	<?php
 	if(isset($_SESSION['valid'])) {			
