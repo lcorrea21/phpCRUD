@@ -8,3 +8,5 @@ Blog Article: [CRUD Create, Read, Update, Delete in PHP & MySQL with Login & Reg
 At first, users need to register and login. After successful login, users can add their product data. Users can see only those data that they have added.
 
 SQL script to create database and tables is present in **database.sql** file.
+
+Test
