@@ -1,0 +1,42 @@
+name: Build Application
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+    branches:
+      - main
+      - release
+      - 'feature/**'
+      
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+          
+      - name: Github Event
+        shell: bash
+        run: echo ${{ toJson(github) }}
+
+      - name: Get branch name (merge)
+        if: |
+          github.event.workflow_run.event != 'pull_request' &&
+          (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release')
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
+
+      - name: Get branch name (pull request)
+        if: |
+          github.event.workflow_run.event == 'pull_request' ||
+          github.ref != 'refs/heads/main'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF#refs/heads/} | tr [:upper:] [:lower:])" >> $GITHUB_ENV
+        
+      - name: Debug
+        id: debug
+        run: echo  "BRANCH_RPS_NAME=${{ env.BRANCH_NAME }}" >> $GITHUB_OUTPUT
