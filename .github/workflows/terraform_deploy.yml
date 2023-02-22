@@ -5,7 +5,7 @@ on:
     workflows: [ Build Application ]
     types: [ completed ]
     branches:
-      - main
+      - master
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
