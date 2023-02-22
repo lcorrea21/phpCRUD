@@ -9,11 +9,14 @@ on:
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
-
-load_variables:
+jobs:
+  load_variables:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Github Object
         run: echo ${{ toJson(github) }} 
     
