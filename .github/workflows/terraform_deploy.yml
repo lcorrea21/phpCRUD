@@ -16,9 +16,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Github Object
-        run: echo ${{ toJson(github) }} 
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
     
       - name: Get branch name (main)
         if: |
