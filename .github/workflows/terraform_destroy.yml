@@ -1,0 +1,42 @@
+name: Terraform Destroy
+
+on:
+  pull_request:
+    types:
+      - closed
+  workflow_dispatch: #this attribute will enable the manual run to the pipeline
+  
+defaults:
+  run:
+    shell: bash
+    
+jobs:
+  branch_name:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch name (pull request)
+        if: github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
+
+      - name: Debug
+        id: debug
+        run: echo  "BRANCH_RPS_NAME=${{ env.BRANCH_NAME }}" >> $GITHUB_OUTPUT
+
+    outputs:
+      branch_rps_name: ${{ steps.debug.outputs.BRANCH_RPS_NAME }}
+        
+  terraform_workflow:
+    needs: [ branch_name ]
+    if: github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Github Object
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
