@@ -44,3 +44,7 @@ jobs:
       - name: Debug
         id: debug
         run: echo  "BRANCH_RPS_NAME=${{ env.BRANCH_NAME }}" >> $GITHUB_OUTPUT
+
+      - name: Test
+        id: debug
+        run: echo  "TF_VAR_http=https://${{ env.BRANCH_NAME }}-qa.rps.revalizesoftware.com/graphql"
