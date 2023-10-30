@@ -4,10 +4,6 @@ on:
   pull_request:
     types:
       - closed
-    branches:
-      - 'feature/**'
-      - '!master'
-      - '!release'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
   
 defaults:
@@ -16,10 +12,10 @@ defaults:
     
 jobs:
   branch_name:
+    if: github.head_ref != 'master' && github.head_ref != 'release'
     runs-on: ubuntu-latest
     steps:
       - name: Get branch name (pull request)
-        if: github.head_ref != 'master' && github.head_ref != 'release'
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
 
@@ -32,7 +28,6 @@ jobs:
         
   terraform_workflow:
     needs: [ branch_name ]
-    if: github.head_ref != 'master' && github.head_ref != 'release'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
