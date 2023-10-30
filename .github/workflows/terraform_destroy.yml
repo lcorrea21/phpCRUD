@@ -4,6 +4,9 @@ on:
   pull_request:
     types:
       - closed
+    branches-ignore:
+      - master
+      - release
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
   
 defaults:
@@ -12,7 +15,6 @@ defaults:
     
 jobs:
   branch_name:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Get branch name (pull request)
