@@ -1,0 +1,24 @@
+name: Clean up ACR on Branch Delete
+
+on: [ delete ]
+
+jobs:
+  cleanup-acr:
+    if: github.event.ref_type == 'branch' && github.head_ref != 'master' && github.head_ref != 'release'
+    runs-on: ubuntu-latest
+    env:
+      REGISTRY_NAME: "pricingserviceacr"
+      IMAGE_REPO: "revalize/cpq/rev-cpq-pricing-service-ui"
+    steps:
+      - name: Github Object
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
+
+      - name: Get branch name
+        run: echo "BRANCH_NAME=$(echo ${{ github.event.ref }} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
+
+      - name: Debug
+        id: debug
+        run: echo  "BRANCH_RPS_NAME=${{ env.BRANCH_NAME }}" >> $GITHUB_OUTPUT
