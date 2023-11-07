@@ -20,8 +20,12 @@ repositories {
 }
 
 val junitVersion = "5.10.0"
+val dgsVersion = "7.6.0"
 
 dependencies {
     implementation("org.wiremock:wiremock:3.2.0")
     implementation("org.junit.jupiter:junit-jupiter:$junitVersion")
+    implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:$dgsVersion"))
+    implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$dgsVersion")
+    implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:$dgsVersion")
 }
