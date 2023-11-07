@@ -30,7 +30,7 @@ jobs:
           OBJECT
           
       - name: Validate Dependabot
-        if: ${{ env.ARM_CLIENT_ID != '' }} && ${{ github.actor != 'lcorrea21' }}
+        if: ${{ env.ARM_CLIENT_ID != '' }} && ${{ github.actor != lcorrea21 }}
         run: echo "El actor ${{ github.actor }} no es un Dependabot"
 
       - name: Get branch name (merge)
