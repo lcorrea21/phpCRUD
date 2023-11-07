@@ -9,7 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-      day: "Monday"
-      time: "22:44"
+      day: "monday"
+      time: "22:45"
       # Use Bogota Standar Time (UTC -05:00)
       timezone: "America/Bogota"
