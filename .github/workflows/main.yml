@@ -14,6 +14,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
     
     steps:
       - name: Checkout repository
@@ -28,7 +30,7 @@ jobs:
           OBJECT
           
       - name: Validate Dependabot
-        if: ${{ github.actor != 'dependabot[bot]' }}
+        if: ${{ env.ARM_CLIENT_ID != '' }} && ${{ github.actor != 'dependabot[bot]' }}
         run: echo "El actor no es un Dependabot"
 
       - name: Get branch name (merge)
