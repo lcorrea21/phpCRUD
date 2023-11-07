@@ -19,7 +19,7 @@ repositories {
     google()
 }
 
-val junitVersion = "5.10.0"
+val junitVersion = "5.10.1"
 
 dependencies {
     implementation("org.wiremock:wiremock:3.2.0")
