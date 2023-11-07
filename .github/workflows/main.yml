@@ -26,6 +26,10 @@ jobs:
           cat << OBJECT
           ${{ toJson(github) }}
           OBJECT
+          
+      - name: Validate Dependabot
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        run: echo "El actor no es un Dependabot"
 
       - name: Get branch name (merge)
         if: |
