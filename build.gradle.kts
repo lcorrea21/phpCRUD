@@ -22,6 +22,6 @@ repositories {
 val junitVersion = "5.10.0"
 
 dependencies {
-    implementation("org.wiremock:wiremock:3.2.0")
+    implementation("org.wiremock:wiremock:3.3.1")
     implementation("org.junit.jupiter:junit-jupiter:$junitVersion")
 }
