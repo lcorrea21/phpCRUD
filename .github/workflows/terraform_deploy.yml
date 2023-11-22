@@ -6,6 +6,7 @@ on:
     types: [ completed ]
     branches:
       - master
+      - release
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
