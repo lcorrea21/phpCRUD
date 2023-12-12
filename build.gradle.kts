@@ -20,7 +20,7 @@ repositories {
 }
 
 val junitVersion = "5.10.0"
-val dgsVersion = "8.0.1"
+val dgsVersion = "8.2.0"
 
 dependencies {
     implementation("org.wiremock:wiremock:3.2.0")
