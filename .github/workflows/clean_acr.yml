@@ -4,7 +4,7 @@ on: [ delete ]
 
 jobs:
   cleanup-acr:
-    if: github.event.ref_type == 'branch' && github.head_ref != 'master' && github.head_ref != 'release'
+    if: github.event.ref_type == 'branch' && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     env:
       REGISTRY_NAME: "pricingserviceacr"
