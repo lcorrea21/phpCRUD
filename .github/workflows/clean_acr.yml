@@ -16,6 +16,9 @@ jobs:
           ${{ toJson(github) }}
           OBJECT
 
+      - name: GitHub Ref variables
+        run: echo $GITHUB_REF $GITHUB_REF_NAME
+
       - name: Get branch name
         run: echo "BRANCH_NAME=$(echo ${{ github.event.ref }} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
 
