@@ -9,7 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id("org.liquibase.gradle") version "2.2.1"
-    id("org.springframework.boot") version "3.2.2"
+    id("org.springframework.boot") version "3.2.3"
     java
 }
 
