@@ -19,7 +19,7 @@ repositories {
     google()
 }
 
-val junitVersion = "5.10.0"
+val junitVersion = "5.10.2"
 val dgsVersion = "8.4.2"
 
 dependencies {
