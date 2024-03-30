@@ -23,7 +23,7 @@ val junitVersion = "5.10.2"
 val dgsVersion = "8.4.2"
 
 dependencies {
-    implementation("org.wiremock:wiremock:3.4.2")
+    implementation("org.wiremock:wiremock:3.5.1")
     implementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:$dgsVersion"))
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$dgsVersion")
