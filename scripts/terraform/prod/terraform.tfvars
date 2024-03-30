@@ -1,0 +1,7 @@
+prod_resource_group_name      = "UC1RevProd1"
+prod_resource_group_sqlserver = "UC1-SQL"
+prod_cluster_name             = "UC1RevProd1"
+prod_mssql_name               = "revuc1cfoprsq01"
+prod_mssql_full_name          = "revuc1cfoprsq01.privatelink.database.windows.net"
+prod_sql_db                   = "PricingService"
+prod_key_vault_name           = "revuc1psvprkv01"
