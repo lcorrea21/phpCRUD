@@ -18,6 +18,6 @@ updates:
     schedule:
       interval: "weekly"
       day: "sunday"
-      time: "15:40"
+      time: "14:45"
       # Use Bogota Standar Time (UTC -05:00)
       timezone: "America/Bogota"
