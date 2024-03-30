@@ -14,10 +14,10 @@ updates:
       # Use Bogota Standar Time (UTC -05:00)
       timezone: "America/Bogota"
   - package-ecosystem: "terraform"
-    directory: "/scripts/terraform/*" # Location of package manifests
+    directory: "/scripts/terraform/*/**" # Location of package manifests
     schedule:
       interval: "weekly"
       day: "sunday"
-      time: "14:45"
+      time: "15:15"
       # Use Bogota Standar Time (UTC -05:00)
       timezone: "America/Bogota"
