@@ -17,7 +17,7 @@ jobs:
   load_variables:
     runs-on: ubuntu-latest
     env:
-      BRANCH_NAME2: $ {{needs.reusable_workflow.outputs.branch_rps_name}}
+      BRANCH_NAME2: ${{needs.reusable_workflow.outputs.branch_rps_name}}
 
     steps:
       - name: Checkout repository
