@@ -21,7 +21,7 @@ repositories {
 
 // Dependencies versions
 val dgsVersion = "9.0.3"
-val junitVersion = "5.10.2"
+val junitVersion = "5.11.0"
 val wiremockVersion = "3.5.2"
 
 dependencies {
