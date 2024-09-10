@@ -11,10 +11,13 @@ on:
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
 jobs:
+  reusable_workflow:
+    uses: ./.github/workflows/main.yml
+    
   load_variables:
     runs-on: ubuntu-latest
     env:
-       BRANCH_NAME2: ${{ github.head_ref || github.ref_name }}
+      BRANCH_NAME2: $ {{needs.reusable_workflow.outputs.branch_rps_name}}
 
     steps:
       - name: Checkout repository
