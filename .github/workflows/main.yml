@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      BRANCH_NAME2: ${{ github.head_ref || github.ref_name }} 
     
     steps:
       - name: Checkout repository
