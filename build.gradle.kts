@@ -19,11 +19,13 @@ repositories {
     google()
 }
 
+// Dependencies versions
+val dgsVersion = "9.0.3"
 val junitVersion = "5.11.0"
-val dgsVersion = "8.5.0"
+val wiremockVersion = "3.5.2"
 
 dependencies {
-    implementation("org.wiremock:wiremock:3.5.2")
+    implementation("org.wiremock:$wiremockVersion")
     implementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:$dgsVersion"))
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$dgsVersion")
