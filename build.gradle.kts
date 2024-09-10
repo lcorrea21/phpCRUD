@@ -16,10 +16,10 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    // Use Google for resolving dependencies.
     google()
 }
 
-// Dependencies versions
 val dgsVersion = "9.0.3"
 val junitVersion = "5.10.2"
 val wiremockVersion = "3.5.2"
