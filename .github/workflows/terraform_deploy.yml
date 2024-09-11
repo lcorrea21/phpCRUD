@@ -10,15 +10,9 @@ on:
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
-jobs:
-  reusable_workflow:
-    uses: ./.github/workflows/main.yml
-    
+jobs:   
   load_variables:
     runs-on: ubuntu-latest
-    needs: reusable_workflow
-    env:
-      BRANCH_NAME2: ${{needs.reusable_workflow.outputs.branch_rps_name}}
 
     steps:
       - name: Checkout repository
@@ -41,9 +35,10 @@ jobs:
 
       - name: Get branch name other branch
         if: |
-          (github.event.workflow_run.event == 'pull_request' || github.event_name == 'workflow_dispatch') && env.BRANCH_NAME2 != 'master' && env.BRANCH_NAME2 != 'release'
+          (github.event.workflow_run.event == 'pull_request' || github.event_name == 'workflow_dispatch') &&
+          github.event.workflow_run.head_branch != 'master'
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${{ env.BRANCH_NAME2 }} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(echo ${{ github.event.workflow_run.head_branch }} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
 
       - name: Debug
         id: debug
