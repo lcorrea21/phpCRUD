@@ -10,19 +10,10 @@ on:
       - master
       - release
       - 'feature/**'
-  workflow_call:
-    # Map the workflow outputs to job outputs
-    outputs:
-      branch_rps_name:
-        description: "The branch rps name"
-        value: ${{ jobs.build-and-test.outputs.output1 }}
       
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    # Map the job outputs to step outputs
-    outputs:
-      output1: ${{ steps.debug.outputs.branch_rps_name }}
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       BRANCH_NAME2: ${{ github.head_ref || github.ref_name }} 
