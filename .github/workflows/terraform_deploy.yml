@@ -13,7 +13,7 @@ on:
 jobs:   
   load_variables:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.pull_requests.base.ref != 'release' && github.event.workflow_run.pull_requests.head.ref != 'master' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.pull_requests[0].base.ref != 'release' && github.event.workflow_run.pull_requests[0].head.ref != 'master' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
