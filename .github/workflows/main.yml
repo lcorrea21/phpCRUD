@@ -39,7 +39,7 @@ jobs:
           github.event_name != 'pull_request' &&
           (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release')
         shell: bash
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=$(echo ${{ env.BRANCH_NAME2 }} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
 
       - name: Get branch name (pull request)
         if: |
