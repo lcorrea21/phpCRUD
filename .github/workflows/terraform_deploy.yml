@@ -10,10 +10,13 @@ on:
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
+env:
+  MASTER_HEAD_BRANCH: ${{ contains(github.event.workflow_run.pull_requests[0].head.ref, 'master') && true || false }}
+
 jobs:   
   load_variables:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && !contains(github.event.workflow_run.pull_requests[0].head.ref, 'master') }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && !env.MASTER_HEAD_BRANCH }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
