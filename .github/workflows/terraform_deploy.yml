@@ -16,7 +16,7 @@ env:
 jobs:   
   load_variables:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && !env.MASTER_HEAD_BRANCH }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
