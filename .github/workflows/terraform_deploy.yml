@@ -10,9 +10,6 @@ on:
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
-env:
-  MASTER_HEAD_BRANCH: ${{ contains(github.event.workflow_run.pull_requests[0].head.ref, 'master') && true || false }}
-
 jobs:   
   load_variables:
     runs-on: ubuntu-latest
