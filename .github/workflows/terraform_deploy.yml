@@ -10,13 +10,13 @@ on:
       - 'feature/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
-jobs:
+jobs:   
   load_variables:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' && (contains(github.event.workflow_run.pull_requests[0].head.ref, 'master') && true || false) == false }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -28,8 +28,7 @@ jobs:
     
       - name: Get branch name (main)
         if: |
-          (github.event.workflow_run.event == 'pull_request' || github.event.workflow_run.event == 'push' || github.event_name == 'workflow_dispatch')  &&
-          github.event.workflow_run.head_branch == 'master'
+          (github.event.workflow_run.event == 'push' || github.event_name == 'workflow_dispatch') && github.event.workflow_run.head_branch == 'master'
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
 

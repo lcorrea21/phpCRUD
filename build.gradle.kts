@@ -8,22 +8,24 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
-    id("org.liquibase.gradle") version "2.2.1"
-    id("org.springframework.boot") version "3.2.4"
+    id("org.liquibase.gradle") version "3.0.1"
+    id("org.springframework.boot") version "3.3.4"
     java
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    // Use Google for resolving dependencies.
     google()
 }
 
-val junitVersion = "5.10.2"
-val dgsVersion = "8.5.0"
+val dgsVersion = "9.1.2"
+val junitVersion = "5.11.1"
+val wiremockVersion = "3.8.0"
 
 dependencies {
-    implementation("org.wiremock:wiremock:3.8.0")
+    implementation("org.wiremock:$wiremockVersion")
     implementation("org.junit.jupiter:junit-jupiter:$junitVersion")
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:$dgsVersion"))
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$dgsVersion")
