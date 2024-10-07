@@ -46,6 +46,10 @@ jobs:
           github.event_name == 'pull_request' && env.BRANCH_NAME2 != 'master' && env.BRANCH_NAME2 != 'release'
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${{ env.BRANCH_NAME2 }} | tr [:upper:] [:lower:] | tr /_ - | cut -d "-" -f 2-3)" >> $GITHUB_ENV
+
+      - name: Assign version
+        if: ${{ env.BRANCH_NAME2 == 'master' || github.base_ref == 'master' || (startsWith(github.head_ref,'feature') && startsWith(github.base_ref, 'feature')) }}
+        run: echo "PS_VERSION=123456" >> $GITHUB_ENV
         
       - name: Debug
         id: debug
