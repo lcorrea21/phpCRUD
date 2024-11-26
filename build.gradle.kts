@@ -20,7 +20,7 @@ repositories {
     google()
 }
 
-val dgsVersion = "9.1.2"
+val dgsVersion = "9.2.2"
 val junitVersion = "5.11.1"
 val wiremockVersion = "3.8.0"
 
